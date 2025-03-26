@@ -178,8 +178,7 @@
         <button class="payment-btn" onclick="showPaymentPrompt(50)">7 Days+4 hours - unlimited (Ksh 50)</button>      
         <button class="payment-btn" onclick="showPaymentPrompt(250)">31 Days+5 minutes - Unlimited (Ksh 250)</button>
                 <button class="payment-btn" onclick="showPaymentPrompt(500)">60+2 Days - unlimited (Ksh 500)</button>
-                        <button class="payment-btn" onclick="showPaymentPrompt(1000)">92+8 days + another additonal 10 hours - unlimited (Ksh 1000)</button>
-
+                
         <div class="till-info">phone number: <strong>0741828807</strong></div>
         <button class="copy-btn" onclick="copyTillNumber()">Copy phone number</button>
 
@@ -200,7 +199,7 @@
     <script>
         function showPaymentPrompt(amount, isFreeTrial = false) {
             let message = isFreeTrial 
-                ? "Free payment option is only available for devices paid at least once every day."
+                ? "Free trial option is only available for devices which had ever purchased atleast one package...we are working hard to ensure that every person could get a free trial even if his/her device isn't registered in our system...starlink cares."
                 : `Pay Ksh ${amount} to phone number 0741828807`;
 
             document.getElementById("modalText").textContent = message;
