@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service.starlink.ke</title>
+    <style>
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #148122, #000000, #0a69a0);
+            background-size: 400% 400%;
+            animation: gradientMove 8s infinite linear;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            max-width: 420px;
+            width: 90%;
+            color: #fff;
+            backdrop-filter: blur(10px);
+            border: 3px solid #4af626; /* Added glowing border effect */
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #4af626;
+            text-shadow: 0px 0px 10px rgba(74, 246, 38, 0.8);
+        }
+
+        button {
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px 0;
+            width: 100%;
+            font-weight: bold;
+            transition: 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            border: 2px solid transparent; /* Default border */
+        }
+
+        button:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            border-color: #fff; /* Changes border on hover */
+        }
+
+        .payment-btn {
+            background: linear-gradient(45deg, #148122, #1bd05f);
+            color: #ffffff;
+        }
+
+        .payment-btn:hover {
+            background: linear-gradient(45deg, #0f7b0f, #14a54f);
+        }
+
+        .copy-btn {
+            background: #ff9800;
+            color: #fff;
+        }
+
+        .copy-btn:hover {
+            background: #e68900;
+        }
+
+        .till-info {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #4af626;
+            font-weight: bold;
+            background: rgba(74, 246, 38, 0.2);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        /* Custom Modal Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 350px;
+            color: #333;
+            font-size: 18px;
+            animation: fadeIn 0.3s ease-in-out;
+            border: 3px solid #ff9800; /* Added border */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .close-btn {
+            background: #ff4d4d;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .close-btn:hover {
+            background: #e60000;
+        }
+
+        /* Help Section */
+        .help-section {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            border: 2px solid #ff9800; /* Added border */
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .email {
+            color: #4af626;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .email:hover {
+            text-decoration: underline;
+            color: #14a54f;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Select a Package</h1>
+        <div class="payment-info">Starlink Home <i>(Only Safaricom)</i></div> 
+        <button class="payment-btn" onclick="showPaymentPrompt(0, true)">5 minutes free trial</button>
+         <button class="payment-btn" onclick="showPaymentPrompt(5)">8+1 hours - unlimited (Ksh 5)</button>       
+        <button class="payment-btn" onclick="showPaymentPrompt(10)">25+2 hours - Unlimited (Ksh 10)</button>
+        <button class="payment-btn" onclick="showPaymentPrompt(25)">72+5 hours - unlimited (Ksh 25)</button>
+        <button class="payment-btn" onclick="showPaymentPrompt(50)">7 Days+4 hours - unlimited (Ksh 50)</button>      
+        <button class="payment-btn" onclick="showPaymentPrompt(250)">31 Days+5 minutes - Unlimited (Ksh 250)</button>
+                <button class="payment-btn" onclick="showPaymentPrompt(500)">60+2 Days - unlimited (Ksh 500)</button>
+                        <button class="payment-btn" onclick="showPaymentPrompt(1000)">92+8 days + another additonal 10 hours - unlimited (Ksh 1000)</button>
+
+        <div class="till-info">phone number: <strong>0741828807</strong></div>
+        <button class="copy-btn" onclick="copyTillNumber()">Copy phone number</button>
+
+        <div class="help-section">
+            <p>Need help? Contact support:</p>
+            <a href="mailto:Helplinestarl@gmail.com" class="email">support@starlink.ke</a>
+        </div>
+    </div>
+
+    <!-- Custom Modal -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <p id="modalText">Pay Ksh 0 to till 3133426</p>
+            <button class="close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function showPaymentPrompt(amount, isFreeTrial = false) {
+            let message = isFreeTrial 
+                ? "Free payment option is only available for devices paid at least once every day."
+                : `Pay Ksh ${amount} to phone number 0741828807`;
+
+            document.getElementById("modalText").textContent = message;
+            document.getElementById("paymentModal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("paymentModal").style.display = "none";
+        }
+
+        function copyTillNumber() {
+            const tillNumber = "0700281720";
+            navigator.clipboard.writeText(tillNumber).then(() => {
+                alert("phone number copied: " + tillNumber);
+            }).catch(err => {
+                alert("Failed to copy: " + err);
+            });
+        }
+    </script>
+
+</body>
+</html>
